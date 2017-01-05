@@ -1,0 +1,124 @@
+<div class="stream-setting">
+	<div class="setting-left">
+		<div class="setting-basic">
+			<div class="block-panel">
+				<div class="panel-tab">
+		 			
+		 		</div>
+		 		<div class="panel-content ">
+					<form action="" id="setting-basic-form">
+					 	<div class="form-group">
+						 	<input class="form-control" type="text" name="setting-title" id="setting-title" placeholder="Live Stream Title" 
+						 	{% if setting.title is not empty %}
+						 	value="{{ setting.title }}"
+						 	{% endif %}>
+						 </div>
+						
+						 <div class="form-group">
+						 	<textarea class="form-control" name="setting-description" placeholder="add description" id="" cols="30" rows="5" >{{ setting.desc }}</textarea>
+						 </div>
+						
+						 <div class="form-group">
+						 	<div class="form-control">
+							<label for="stream-start-time-datepicke">set live stream time</label>
+							<input type="text"  id="stream-start-time-datepicker">
+						</div>
+						 </div>
+						
+						 <div class="form-group">
+						 	<select name="stream-type-category" id="">
+					 		<option value="">select your live category</option>
+							<option value="math">math</option>
+							<option value="english">english</option>
+							<option value="accounting">accounting</option>
+							<option value="it">it</option>
+						</select>
+						<div class="form-group">
+							<button class="btn btn-primary" id="stream-setting-update">Update</button>
+							<button class="btn btn-primary" id="stream-setting-active">
+								{% if setting.active == 0 %} 
+								Active Live
+								{% elseif setting.active == 1 %}
+								Deactive Live
+								{% else %}
+								Something Wrong
+								{% endif %}
+							</button>
+						</div>
+						<div class="clr"></div>
+						</div>
+				 	</form>
+		 		</div>
+			</div>
+		 	
+		 	<div class="block-panel">
+		 		<div class="panel-tab">
+		 		</div>
+		 		 <div class="panel-content">
+					<div class="setting-rtmp">
+						<div class="form-group">
+							<label for="">
+								Your live stream URL Address
+								<input type="text" class="form-control" readonly value="{{ setting.URL }}">
+							</label>
+						</div>
+						<div class="form-group">
+							<label for="">
+								Your live stream key (please do not show this key to anyone): 
+								<input type="password" "form-control" id="setting-stream-key" readonly value="{{ setting.key }}" >
+								<button class="btn btn-default" onclick="show_key();">display</button>
+							</label>
+							<div>UID: {{ setting.uid }}</div>
+						</div>
+					</div>
+		 		</div>
+		 	</div>
+		
+		</div>
+	</div>
+	<div class="setting-right"></div>
+	<div class="clr"></div>
+</div>
+
+
+
+<style>
+body{background: #f1f1f1;}
+.block-panel{
+    margin: 0 0 10px;
+    border: 0;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.panel-content{
+	padding: 15px;
+}
+.stream-setting{
+	width: 1080px;
+}
+.stream-setting label{
+	font-weight: normal;
+}
+.setting-left{
+	width:50%;
+	float: left;
+	border:1px solid black;
+	padding-left:10px;
+	padding-right: 10px;
+	padding-top: 10px; 
+}
+.setting-right{
+	width: 39%;
+	float: left;
+	border:1px solid red;
+}
+.form-component{
+	float: left; width: 100%;
+	margin-bottom: 10px;
+}
+.setting-rtmp{
+	margin-top: 20px;
+}
+</style>

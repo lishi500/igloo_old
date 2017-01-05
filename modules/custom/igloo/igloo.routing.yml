@@ -1,0 +1,48 @@
+igloo.baseline:
+    path: '/'
+    defaults:
+        _controller: '\Drupal\igloo\Controller\PageController::rootDir'
+        _title: 'igloo Live Stream'
+    requirements:
+        _permission: 'access content'
+
+igloo.home_page:
+    path: '/home'
+    defaults:
+        _controller: '\Drupal\igloo\Controller\PageController::home'
+        _title: 'igloo Live Stream'
+    requirements:
+        _permission: 'access content'
+
+igloo.live_page:
+    path: '/live/{key}'
+    defaults:
+        _controller: '\Drupal\igloo\Controller\PageController::live'
+        _title: 'igloo Live Stream'
+    requirements:
+        _permission: 'access content'
+
+igloo.stream_setting:
+    path: '/stream_setting'
+    defaults:
+        _controller: '\Drupal\igloo\Controller\PageController::stream_setting'
+        _title: 'igloo Live Stream'
+    requirements:
+        _permission: 'access user profiles'
+
+igloo.stream_setting_active:
+    path: '/stream_setting/update'
+    defaults:
+        _controller: '\Drupal\igloo\Controller\AjaxController::stream_setting_update'
+        _title: 'igloo Live Stream'
+    requirements:
+        _permission: 'access user profiles'
+        _method: 'POST'
+
+igloo.stream_setting_active:
+    path: '/stream_setting/active/{bool}'
+    defaults:
+        _controller: '\Drupal\igloo\Controller\AjaxController::stream_setting_active'
+        _title: 'igloo Live Stream'
+    requirements:
+        _permission: 'access user profiles'

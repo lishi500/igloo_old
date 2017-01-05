@@ -1,0 +1,106 @@
+<?php 
+	function igloo_schema(){
+	 	$schema['stream_setting'] = array(
+	 		 'description' => 'The base table for user live stream setting.',
+	 		 'fields' => array(
+	 		 	'id' => array(
+			        'description' => 'The primary identifier for users(uid).',
+			        'type' => 'serial',
+			        'not null' => TRUE,
+			        'length' => 10,
+		      	),
+		      	'uid' => array(
+		      		'description' => 'The foreign key for user_id.',
+			        'type' => 'int',
+			        'not null' => TRUE,
+			        'length' => 10,
+		      	),
+		      	'public_URL' => array(
+			        'description' => 'The public URL for stream_setting.',
+			        'type' => 'varchar',
+			        'length' => 128,
+		      	),
+		      	'stream_key' => array(
+			        'description' => 'The stream key fro rtmp.',
+			        'type' => 'varchar',
+			        'length' => 128,
+		      	),
+		      	'title' => array(
+			        'description' => 'The title for stream_setting.',
+			        'type' => 'varchar',
+			        'length' => 256,
+		      	),
+		      	'description' => array(
+			        'description' => 'The title for stream_setting.',
+			        'type' => 'text',
+		      	),
+		      	'start_time' => array(
+			        'description' => 'The start time for stream_setting.',
+			        'mysql_type' => 'timestamp',
+			        'not null' => TRUE,
+		      	),
+		      	'category' => array(
+			        'description' => 'The category for stream_setting.',
+			        'type' => 'varchar',
+			        'length'=> 64,
+		      	),
+		      	'stream_active' => array(
+		      		'description' => 'If true, display start_time, work around for timestamp, 0 false, 1 true',
+		      		'type' => 'int',
+		      		'length' => 1,
+		      	)
+	 		 ),
+ 		 	'primary key' => array('id'),
+	   		'foreign keys' => array(
+		     	'stream_setting_uid_foreign_key' => array(
+			       'table' => 'users',
+			       'columns' => array('uid' => 'uid'),
+		     	)
+		    ),
+	 	);
+		return $schema;
+	}
+
+function igloo_enable() {
+	// query to enable and modify drupal schema for TimeStamp
+  db_query('
+    ALTER TABLE {stream_setting} 
+    MODIFY start_time TIMESTAMP NOT NULL 
+    DEFAULT CURRENT_TIMESTAMP 
+    ON UPDATE CURRENT_TIMESTAMP'
+  );
+}
+
+function igloo_install() {
+  // drupal_install_schema(/*you schema data here */);
+  // now fill the database table with your schema...
+  // db_query(/* Query to fill db table here */);
+  // add any number of db_query() calls needed to 
+  // fill your table.
+
+	$values = db_insert('stream_setting')
+    ->fields(array(
+      'uid' => 1,
+      'public_URL' => 'w3c',
+      'stream_key' => 'admin1234',
+      'title' => 'admin test stream',
+      'description' => 'admin test stream url http://localhost',
+      'start_time' => '2016-12-27 05:02:12',
+      'category' => 'English',
+      'stream_active' => 0
+    ))
+  ->execute();
+  $values = db_insert('stream_setting')
+    ->fields(array(
+      'uid' => 2,
+      'public_URL' => 'carl',
+      'stream_key' => 'carl1234',
+      'title' => 'carl test stream',
+      'description' => 'carl test stream url http://localhost',
+      'start_time' => '2016-12-29 05:02:12',
+      'category' => 'Game',
+      'stream_active' => 1
+    ))
+  ->execute();
+}
+ ?>

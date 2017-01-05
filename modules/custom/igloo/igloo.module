@@ -1,0 +1,24 @@
+<?php
+function igloo_theme($existing, $tpye, $theme, $path) {
+
+	return array(
+        'home_twig' => array(
+            'variables' => array(
+                'frontLive' => null,
+                'year' => null,
+            ),
+        ),
+        'live_stream_twig' => array(
+        	'variables'=> array(
+        		'liveStream' => null,
+        	),
+        ),
+        'live_stream_setting_twig'=>array(
+    		'variables'=> array(
+        		'setting' => null,
+        	),
+    	),
+    );
+}
+
+?>

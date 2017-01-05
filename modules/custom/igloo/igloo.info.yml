@@ -1,0 +1,6 @@
+name: igloo custom module
+description: Minimal Style for twig template rendering
+package: Custom
+
+type: module
+core: 8.x
