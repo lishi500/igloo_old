@@ -5,7 +5,14 @@ $(function(){
     });    
     $( "#stream-start-time-datepicker" ).datetimepicker({format: 'yyyy-mm-dd hh:ii'});
 
-   
+     $("#stream-setting-active").click(function(){
+    		$.ajax({
+			  url: "/stream_setting/active/"+$(this).attr("data"),  
+			})
+    		.done(function(response) {
+				location.reload();
+			});
+    });
 }); 
 
 function show_key(){

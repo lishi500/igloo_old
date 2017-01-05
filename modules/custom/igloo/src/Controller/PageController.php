@@ -55,7 +55,7 @@ class PageController extends ControllerBase {
             ->fields('s')
             ->execute()
             ->fetchAssoc();
-        // var_dump(get_defined_vars()); 
+        
         $time = ($stream_info['stream_active']==1)?$stream_info['start_time']:"";
         $arr = array(
             'uid' => $user->id(),
@@ -65,8 +65,9 @@ class PageController extends ControllerBase {
             'desc' => $stream_info['description'],            
             'time' => $time,
             'category' =>$stream_info['category'],
-            'stream_active'=>$stream_info['stream_active'],
+            'active'=>$stream_info['stream_active'],
         );
+        var_dump(get_defined_vars()); 
         return $arr;
     }
 

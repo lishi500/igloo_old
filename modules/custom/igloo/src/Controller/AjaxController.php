@@ -27,21 +27,20 @@ class AjaxController extends ControllerBase {
 
 	public function stream_setting_active($bool){
 		$user = ControllerBase::currentUser();
-		$update = "";
-		if($bool=="true")
-			$update = 1;
-		if($bool=="false")
-			$update =0;
-		if($update!=""){
-			$query = db_update('stream_setting') 
-			  ->fields(array(
-			    'stream_active' => $update,
-			  ))
-			  ->condition('uid', $user->id(), '=')
-			  ->execute();
-			  return $query;
+		
+		$num_rows = db_update('stream_setting') 
+		  ->fields(array(
+		    'stream_active' => (($bool=="0")?"1":"0"),
+		  ))
+		  ->condition('uid', $user->id(), '=')
+		  ->execute();
+		if($num_rows==1){
+			echo $bool;
+		}else
+		{
+			echo !$bool;
 		}
-		return 0;
+		return new Response();
 	}
 }
   

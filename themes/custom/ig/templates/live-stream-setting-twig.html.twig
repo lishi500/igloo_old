@@ -21,32 +21,32 @@
 						 <div class="form-group">
 						 	<div class="form-control">
 							<label for="stream-start-time-datepicke">set live stream time</label>
-							<input type="text"  id="stream-start-time-datepicker">
+							<input type="text"  id="stream-start-time-datepicker" value="{{ setting.time }}">
 						</div>
 						 </div>
 						
 						 <div class="form-group">
 						 	<select name="stream-type-category" id="">
-					 		<option value="">select your live category</option>
-							<option value="math">math</option>
-							<option value="english">english</option>
-							<option value="accounting">accounting</option>
-							<option value="it">it</option>
-						</select>
+						 		<option value="">select your live category</option>
+								<option value="math">math</option>
+								<option value="english">english</option>
+								<option value="accounting">accounting</option>
+								<option value="it">it</option>
+							</select>
+						</div>
 						<div class="form-group">
 							<button class="btn btn-primary" id="stream-setting-update">Update</button>
-							<button class="btn btn-primary" id="stream-setting-active">
-								{% if setting.active == 0 %} 
+							<a class="btn btn-primary" id="stream-setting-active" data="{{ setting.active }}">
+								{% if setting.active == "0" %} 
 								Active Live
-								{% elseif setting.active == 1 %}
+								{% elseif setting.active == "1" %}
 								Deactive Live
 								{% else %}
 								Something Wrong
 								{% endif %}
-							</button>
+							</a>
 						</div>
 						<div class="clr"></div>
-						</div>
 				 	</form>
 		 		</div>
 			</div>

@@ -30,7 +30,7 @@ igloo.stream_setting:
     requirements:
         _permission: 'access user profiles'
 
-igloo.stream_setting_active:
+igloo.stream_setting_update:
     path: '/stream_setting/update'
     defaults:
         _controller: '\Drupal\igloo\Controller\AjaxController::stream_setting_update'
@@ -45,4 +45,4 @@ igloo.stream_setting_active:
         _controller: '\Drupal\igloo\Controller\AjaxController::stream_setting_active'
         _title: 'igloo Live Stream'
     requirements:
-        _permission: 'access user profiles'
+        _permission: 'access content'
