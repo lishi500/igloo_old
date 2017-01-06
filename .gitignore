@@ -4,6 +4,8 @@
 node_modules
 core
 vendor
+# Ignore processed file
+themes/custom/ig/css
 
 # Ignore paths that contain generated content.
 files/

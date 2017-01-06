@@ -5,7 +5,7 @@ $(function(){
     });    
     $( "#stream-start-time-datepicker" ).datetimepicker({format: 'yyyy-mm-dd hh:ii'});
 
-     $("#stream-setting-active").click(function(){
+ 	$("#stream-setting-active").click(function(){
     		$.ajax({
 			  url: "/stream_setting/active/"+$(this).attr("data"),  
 			})
@@ -13,6 +13,17 @@ $(function(){
 				location.reload();
 			});
     });
+
+ 	$("#testbtn").click(function(){
+ 		console.log($("#setting-basic-form").dirty("isDirty"));
+ 	});
+    $("form").dirty({
+    	onDirty: function(){
+    		console.log("on dirty");
+    	}
+    }); 
+
+    
 }); 
 
 function show_key(){

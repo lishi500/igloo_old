@@ -12,6 +12,7 @@ global-js:
    js/bootstrap.min.js: {}
    js/jquery-ui.min.js: {}
    js/bootstrap-datetimepicker.min.js: {}
+   js/jquery.dirty.js: {}
    js/main.js: {}
  dependencies: 
   - core/jquery 
